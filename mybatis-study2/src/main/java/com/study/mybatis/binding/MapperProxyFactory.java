@@ -1,7 +1,8 @@
-package com.study.mybatis;
+package com.study.mybatis.binding;
+
+import com.study.mybatis.session.SqlSession;
 
 import java.lang.reflect.Proxy;
-import java.util.Map;
 
 /**
  * @description 代理工厂将代理的创建操作封装了一层，如果不进行封装则需要每次使用Proxy.new方法创建实例对象
@@ -16,7 +17,7 @@ public class MapperProxyFactory<T> {
         this.mapperInterface = mapperInterface;
     }
 
-    public T newInstance(Map<String,String> sqlSession){
+    public T newInstance(SqlSession sqlSession){
         final MapperProxy<T> mapperProxy = new MapperProxy<>(sqlSession,mapperInterface);
         return (T) Proxy.newProxyInstance(mapperInterface.getClassLoader(),new Class[]{mapperInterface},mapperProxy);
     }

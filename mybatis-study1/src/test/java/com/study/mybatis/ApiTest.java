@@ -1,5 +1,6 @@
 package com.study.mybatis;
 
+import com.study.mybatis.binding.MapperProxyFactory;
 import com.study.mybatis.dao.IUserDao;
 import org.junit.Test;
 
